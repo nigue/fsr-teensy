@@ -1,0 +1,17 @@
+@startuml
+actor Usuario
+participant SerialControl
+participant PadService
+participant ThresholdRepository
+participant EepromStorage
+
+Usuario -> SerialControl : "3 650"
+SerialControl -> PadService : setThreshold(Threshold(3,650))
+Usuario -> SerialControl : "s"
+SerialControl -> PadService : saveThresholds()
+loop sensor 0..7
+  PadService -> ThresholdRepository : save(Threshold(i,value))
+  ThresholdRepository -> EepromStorage : writeByte(low/high)
+end
+SerialControl -> SerialControl : printThresholds()
+@enduml

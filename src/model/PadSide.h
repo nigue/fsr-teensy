@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 
-enum PadSide : uint8_t {
-  PAD_LEFT  = 0,
-  PAD_RIGHT = 1
+enum class PadSide : uint8_t {
+  LEFT = 0,
+  RIGHT = 1
 };

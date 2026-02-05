@@ -2,13 +2,13 @@
 
 #include <stdint.h>
 
-class Threshold {
+class SensorValue {
  private:
   uint8_t sensorIndex_;
   int16_t value_;
 
  public:
-  Threshold(uint8_t sensorIndex, int16_t value);
+  SensorValue(uint8_t sensorIndex, int16_t value);
 
   uint8_t getSensorIndex() const;
   int16_t getValue() const;

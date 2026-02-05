@@ -1,27 +1,36 @@
-#include "src/model/Threshold.h"
-#include "src/model/PadSide.h"
+#include "src/control/SerialControl.h"
+#include "src/platform/ArduinoEepromStorage.h"
 #include "src/repository/PadConfigRepository.h"
 #include "src/repository/ThresholdRepository.h"
+#include "src/service/PadService.h"
 
-Threshold threshold(1, 512);
+namespace {
 
-//todo 
-/**
-falta una capa service que obtenga los valores de disco y los almacene en 
-clases (ram) en el setup 
+constexpr unsigned long SERIAL_BAUD_RATE = 115200;
+constexpr uint8_t SENSOR_COUNT = EepromLayout::THRESHOLD_COUNT;
 
-*/
+const uint8_t SENSOR_PINS[SENSOR_COUNT] = {
+    A0, A1, A2, A3, A4, A5, A6, A7,
+};
+
+ArduinoEepromStorage eepromStorage;
+ThresholdRepository thresholdRepository(eepromStorage);
+PadConfigRepository padConfigRepository(eepromStorage);
+PadService padService(thresholdRepository, padConfigRepository);
+SerialControl serialControl(padService);
+
+}  // namespace
+
 void setup() {
-  PadSide side = PAD_LEFT;
-  PadConfigRepository::saveSide(side);
-
-  Threshold t0(0, 512);
-  Threshold t1(1, 700);
-
-  ThresholdRepository::save(t0);
-  ThresholdRepository::save(t1);
-
-  Threshold loaded = ThresholdRepository::load(0);
+  serialControl.begin(SERIAL_BAUD_RATE);
+  padService.initialize();
 }
 
-void loop() {}
+void loop() {
+  for (uint8_t i = 0; i < SENSOR_COUNT; ++i) {
+    int16_t rawValue = analogRead(SENSOR_PINS[i]);
+    padService.updateRawValue(i, rawValue);
+  }
+
+  serialControl.processIncoming();
+}
