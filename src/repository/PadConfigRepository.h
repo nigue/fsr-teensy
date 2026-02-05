@@ -1,20 +1,17 @@
 #pragma once
 
-#include <EEPROM.h>
 #include "../model/PadSide.h"
 #include "../eeprom/EepromLayout.h"
+#include "EepromStorage.h"
 
-//todo aplicar una lectura antes de guardar, si hay algo no guardar
-// tal vez aplicar un valor booleano que indique guardado forsoso
 class PadConfigRepository {
-public:
-  static void saveSide(PadSide side) {
-    EEPROM.put(EepromLayout::PAD_SIDE_ADDR, side);
-  }
+ private:
+  EepromStorage& storage_;
 
-  static PadSide loadSide() {
-    uint8_t raw;
-    EEPROM.get(EepromLayout::PAD_SIDE_ADDR, raw);
-    return static_cast<PadSide>(raw);
-  }
+ public:
+  explicit PadConfigRepository(EepromStorage& storage);
+
+  PadSide loadSide() const;
+  void saveSide(PadSide side);
+  void initializeMagic();
 };

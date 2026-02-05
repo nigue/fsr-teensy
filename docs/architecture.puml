@@ -1,0 +1,33 @@
+@startuml
+skinparam packageStyle rectangle
+
+package "Control Layer" {
+  class SerialControl
+}
+
+package "Service Layer" {
+  class PadService
+}
+
+package "Repository Layer" {
+  interface EepromStorage
+  class ThresholdRepository
+  class PadConfigRepository
+}
+
+package "Model" {
+  class Threshold
+  class SensorValue
+  enum PadSide
+}
+
+SerialControl --> PadService
+PadService --> ThresholdRepository
+PadService --> PadConfigRepository
+ThresholdRepository --> EepromStorage
+PadConfigRepository --> EepromStorage
+PadService --> Threshold
+PadService --> SensorValue
+PadConfigRepository --> PadSide
+
+@enduml
