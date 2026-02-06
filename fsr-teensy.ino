@@ -3,14 +3,9 @@
 #include "src/repository/PadConfigRepository.h"
 #include "src/repository/ThresholdRepository.h"
 
+//todo namespace
 Threshold threshold(1, 512);
 
-//todo 
-/**
-falta una capa service que obtenga los valores de disco y los almacene en 
-clases (ram) en el setup 
-
-*/
 void setup() {
   PadSide side = PAD_LEFT;
   PadConfigRepository::saveSide(side);
@@ -21,7 +16,7 @@ void setup() {
   ThresholdRepository::save(t0);
   ThresholdRepository::save(t1);
 
-  Threshold loaded = ThresholdRepository::load(0);
+  //Threshold loaded = ThresholdRepository::load(0);
 }
 
 void loop() {}
