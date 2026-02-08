@@ -10,8 +10,13 @@ TEST_CASE("PadConfigRepository guarda y carga PadSide") {
   MockEepromStorage mock;
   PadConfigRepository repo(mock);
 
+  INFO("Guardando PadSide::RIGHT");
   repo.save(PadSide::RIGHT);
+
+  INFO("Cargando PadSide desde EEPROM");
   PadSide loaded = repo.load();
+
+  CAPTURE(static_cast<int>(loaded));
 
   REQUIRE(loaded == PadSide::RIGHT);
 }

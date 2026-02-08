@@ -40,3 +40,7 @@ g++ -std=c++17 \
   src/repository/PadConfigRepository.cpp \
   -o tests/test_padconfig
 ```
+
+```bash
+./tests/test_padconfig -s
+```
