@@ -8,9 +8,9 @@ g++ -std=c++17 \
   -I tests \
   tests/test_PadConfigRepository.cpp \
   src/repository/PadConfigRepository.cpp \
-  -o tests/bulid/test_padconfig
+  -o tests/build/test_padconfig
 
 echo "▶️ Ejecutando tests..."
-./tests/bulid/test_padconfig -s
+./tests/build/test_padconfig -s
 
 echo "✅ Tests finalizados"
