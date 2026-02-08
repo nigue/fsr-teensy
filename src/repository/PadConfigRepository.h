@@ -6,9 +6,9 @@
 class PadConfigRepository {
 
   private:
-    EepromStorage& storage_;
+    EepromStorage& repository_;
   public:
-    explicit PadConfigRepository(EepromStorage& storage);
+    explicit PadConfigRepository(EepromStorage& repository);
     PadSide load() const;
     void save(PadSide side);
     void init();
