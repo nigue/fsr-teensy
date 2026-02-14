@@ -1,14 +1,10 @@
 #include <EEPROM.h>
+#include "ArduinoEepromStorage.h"
 
-#include "../repository/EepromStorage.h"
+uint8_t ArduinoEepromStorage::readByte(size_t address) const {
+  return EEPROM.read(address);
+}
 
-class ArduinoEepromStorage : public EepromStorage {
- public:
-  uint8_t readByte(size_t address) const override {
-    return EEPROM.read(address);
-  }
-
-  void writeByte(size_t address, uint8_t value) override {
-    EEPROM.write(address, value);
-  }
-};
+void ArduinoEepromStorage::writeByte(size_t address, uint8_t value) {
+  EEPROM.write(address, value);
+}

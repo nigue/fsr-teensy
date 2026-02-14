@@ -1,5 +1,5 @@
 #pragma once
-#include "../../src/repository/EepromStorage.h"
+#include "../../src/plataform/ArduinoEepromStorage.h"
 #include <map>
 
 class MockEepromStorage : public EepromStorage {

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../model/PadSide.h"
-#include "EepromStorage.h"
+#include "../plataform/ArduinoEepromStorage.h"
 
 class PadConfigRepository {
 

@@ -2,7 +2,7 @@
 
 #include <stdint.h>
 #include "../model/Threshold.h"
-#include "EepromStorage.h"
+#include "../plataform/ArduinoEepromStorage.h"
 
 class ThresholdRepository {
 

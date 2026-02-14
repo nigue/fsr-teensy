@@ -1,6 +1,6 @@
 #pragma once
 
-#include "EepromStorage.h"
+#include "../plataform/ArduinoEepromStorage.h"
 
 class EepromHeaderRepository {
 
