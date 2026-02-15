@@ -34,6 +34,14 @@ void CommandService::execute(char command) {
       }
       break;
 
+    case CommandEntry::SET_THRESHOLD_1:
+      {
+        sensorsService_.set(1, 50);
+        const int16_t* values = sensorsService_.getAll();
+        (void)values; // aquí podrías enviarlos por Serial
+      }
+      break;
+
     default:
       // comando desconocido
       break;
