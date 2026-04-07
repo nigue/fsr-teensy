@@ -1,6 +1,7 @@
 #include "PadObj.hpp"
 #include "SensorObj.hpp"
 #include "Pins.hpp"
+#include "Buttons.hpp"
 
 // --- Sensores ---
 SensorObj sL1(Pins::Analog::A2, 199);
