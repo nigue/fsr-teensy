@@ -1,4 +1,3 @@
-// Buttons.hpp
 #pragma once
 
 namespace Buttons {
