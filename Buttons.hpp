@@ -1,7 +1,7 @@
 #pragma once
 
 namespace Buttons {
-
+/*
   inline void start() {
     Joystick.begin();
     Joystick.useManualSend(true);
@@ -18,5 +18,5 @@ namespace Buttons {
   inline void send() {
     Joystick.send_now();
   }
-
+**/
 }
