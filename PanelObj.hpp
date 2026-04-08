@@ -1,18 +1,18 @@
 #pragma once
 
 #include "SensorObj.hpp"
-#include "Buttons.hpp"
+#include "DDR.hpp"
 
 class PanelObj {
 private:
   SensorObj sensorA;
   SensorObj sensorB;
-  const uint8_t buttonNumber;
+  const DDR::DDRButton buttonNumber;
 
   bool pressed;
 
 public:
-  PanelObj(SensorObj a, SensorObj b, uint8_t btn)
+  PanelObj(SensorObj a, SensorObj b, DDR::DDRButton btn)
       : sensorA(a), sensorB(b), buttonNumber(btn), pressed(false) {}
 
   bool isPressed() const {
@@ -31,7 +31,7 @@ public:
     return sensorB;
   }
 
-  uint8_t getButtonNumber() const {
+  DDR::DDRButton getButtonNumber() const {
     return buttonNumber;
   }
 
@@ -49,9 +49,9 @@ public:
     pressed = current;
 
     if (pressed) {
-      Buttons::press(buttonNumber);
+      DDR::press(buttonNumber);
     } else {
-      Buttons::release(buttonNumber);
+      DDR::release(buttonNumber);
     }
 
     //Buttons::send();

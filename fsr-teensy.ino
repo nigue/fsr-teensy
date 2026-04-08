@@ -1,7 +1,7 @@
 #include "PadObj.hpp"
 #include "SensorObj.hpp"
 #include "Pins.hpp"
-#include "Buttons.hpp"
+#include "DDR.hpp"
 
 // --- Sensores ---
 SensorObj sL1(Pins::Analog::A2, 199);
@@ -17,16 +17,16 @@ SensorObj sD1(Pins::Analog::A8, 176);
 SensorObj sD2(Pins::Analog::A9, 81);
 
 // --- Panels ---
-PanelObj leftPanel(sL1, sL2, 5);
-PanelObj downPanel(sD1, sD2, 8);
-PanelObj upPanel(sU1, sU2, 6);
-PanelObj rightPanel(sR1, sR2, 7);
+PanelObj leftPanel(sL1, sL2, DDR::DDRButton::LEFT);
+PanelObj downPanel(sD1, sD2, DDR::DDRButton::DOWN);
+PanelObj upPanel(sU1, sU2, DDR::DDRButton::UP);
+PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT);
 
 // --- Pad completo ---
 PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
 
 void setup() {
-  Buttons::start();
+  DDR::start();
 
 }
 
@@ -41,7 +41,7 @@ void loop() {
 
   if (willSend) {
     lastSend = startMicros;
-    Buttons::send();
+    DDR::send();
   }
 
   if (loopTime == -1) {

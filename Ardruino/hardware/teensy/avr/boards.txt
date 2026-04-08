@@ -1,0 +1,3 @@
+teensy41.menu.usb.ddr=Serial + DDR Controller (4 buttons)
+teensy41.menu.usb.ddr.build.usbtype=USB_DDR
+teensy41.menu.usb.ddr.upload_port.usbtype=USB_DDR
