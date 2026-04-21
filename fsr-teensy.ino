@@ -2,6 +2,7 @@
 #include "SensorObj.hpp"
 #include "Pins.hpp"
 #include "DDR.hpp"
+#include "SerialCommand.hpp"
 
 // --- Sensores ---
 SensorObj sL1(Pins::Analog::A2, 199);
@@ -27,7 +28,7 @@ PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
 
 void setup() {
   DDR::start();
-
+  SerialCommand::begin(115200);
 }
 
 unsigned long lastSend = 0;
@@ -38,7 +39,7 @@ void loop() {
   willSend = (loopTime == -1 || startMicros - lastSend + loopTime >= 1000);
 
   pad.update();
-
+  SerialCommand::handle();
   if (willSend) {
     lastSend = startMicros;
     DDR::send();
