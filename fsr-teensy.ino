@@ -26,9 +26,10 @@ PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT);
 // --- Pad completo ---
 PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
 
+SerialCommand* serialCmd;
 void setup() {
   DDR::start();
-  SerialCommand::begin(115200);
+  serialCmd = new SerialCommand(9600);
 }
 
 unsigned long lastSend = 0;
@@ -39,7 +40,7 @@ void loop() {
   willSend = (loopTime == -1 || startMicros - lastSend + loopTime >= 1000);
 
   pad.update();
-  SerialCommand::handle();
+  serialCmd->handle();
   if (willSend) {
     lastSend = startMicros;
     DDR::send();
