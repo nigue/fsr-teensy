@@ -29,7 +29,7 @@ PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
 SerialCommand* serialCmd;
 void setup() {
   DDR::start();
-  serialCmd = new SerialCommand(9600);
+  serialCmd = new SerialCommand(pad, 9600);
 }
 
 unsigned long lastSend = 0;
