@@ -58,11 +58,9 @@ private:
 
         switch (type) {
             case 't':
-                Serial.print("threshold: ");
                 printThresholds();
                 break;
             case 's':
-                Serial.print("sensor: ");
                 printSensors();
                 break;
             default:
@@ -72,46 +70,44 @@ private:
     }
 
     void printThresholds() {
-        Serial.print("L:");
         Serial.print(pad.getLeft().getSensorA().getThreshold());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getLeft().getSensorB().getThreshold());
 
-        Serial.print(" D:");
+        Serial.print(",");
         Serial.print(pad.getDown().getSensorA().getThreshold());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getDown().getSensorB().getThreshold());
 
-        Serial.print(" U:");
+        Serial.print(",");
         Serial.print(pad.getUp().getSensorA().getThreshold());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getUp().getSensorB().getThreshold());
 
-        Serial.print(" R:");
+        Serial.print(",");
         Serial.print(pad.getRight().getSensorA().getThreshold());
-        Serial.print("/");
+        Serial.print(",");
         Serial.println(pad.getRight().getSensorB().getThreshold());
     }
 
     void printSensors() {
-        Serial.print("L:");
         Serial.print(pad.getLeft().getSensorA().getValue());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getLeft().getSensorB().getValue());
 
-        Serial.print(" D:");
+        Serial.print(",");
         Serial.print(pad.getDown().getSensorA().getValue());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getDown().getSensorB().getValue());
 
-        Serial.print(" U:");
+        Serial.print(",");
         Serial.print(pad.getUp().getSensorA().getValue());
-        Serial.print("/");
+        Serial.print(",");
         Serial.print(pad.getUp().getSensorB().getValue());
 
-        Serial.print(" R:");
+        Serial.print(",");
         Serial.print(pad.getRight().getSensorA().getValue());
-        Serial.print("/");
+        Serial.print(",");
         Serial.println(pad.getRight().getSensorB().getValue());
     }
 
