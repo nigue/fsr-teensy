@@ -7,13 +7,13 @@
 class SensorObj {
 private:
   Pins::Analog pin;
-  uint8_t threshold;
+  int16_t threshold;
   int16_t sensorValue;
   HullMovingAverage hma;
 
 public:
   // Constructor
-  SensorObj(Pins::Analog p, uint8_t t)
+  SensorObj(Pins::Analog p, int16_t t)
       : pin(p), threshold(t), sensorValue(0), hma(FsrConstants::kWindowSize) {}
 
   // 🔥 Lee el sensor y actualiza el valor filtrado
@@ -39,6 +39,6 @@ public:
   Pins::Analog getPin() const { return pin; }
   void setPin(Pins::Analog p) { pin = p; }
 
-  uint8_t getThreshold() const { return threshold; }
-  void setThreshold(uint8_t t) { threshold = t; }
+  int16_t getThreshold() const { return threshold; }
+  void setThreshold(int16_t t) { threshold = t; }
 };
