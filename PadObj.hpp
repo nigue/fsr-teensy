@@ -40,4 +40,11 @@ public:
     up.update();
     right.update();
   }
+
+  void beginLights() {
+    left.beginLight();
+    down.beginLight();
+    up.beginLight();
+    right.beginLight();
+  }
 };

@@ -18,10 +18,10 @@ SensorObj sD1(Pins::Analog::A8, 176);
 SensorObj sD2(Pins::Analog::A9, 81);
 
 // --- Panels ---
-PanelObj leftPanel(sL1, sL2, DDR::DDRButton::LEFT);
-PanelObj downPanel(sD1, sD2, DDR::DDRButton::DOWN);
-PanelObj upPanel(sU1, sU2, DDR::DDRButton::UP);
-PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT);
+PanelObj leftPanel (sL1, sL2, DDR::DDRButton::LEFT,  LightObj(2));
+PanelObj downPanel (sD1, sD2, DDR::DDRButton::DOWN,  LightObj(5));
+PanelObj upPanel   (sU1, sU2, DDR::DDRButton::UP,    LightObj(3));
+PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT, LightObj(4));
 
 // --- Pad completo ---
 PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
@@ -29,6 +29,7 @@ PadObj pad(leftPanel, downPanel, upPanel, rightPanel);
 SerialCommand* serialCmd;
 void setup() {
   DDR::start();
+  pad.beginLights();
   serialCmd = new SerialCommand(pad, 9600);
 }
 
