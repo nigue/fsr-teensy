@@ -18,10 +18,10 @@ SensorObj sD1(Pins::Analog::A8, 176);
 SensorObj sD2(Pins::Analog::A9, 81);
 
 // --- Panels ---
-PanelObj leftPanel (sL1, sL2, DDR::DDRButton::LEFT,  LightObj(2));
-PanelObj downPanel (sD1, sD2, DDR::DDRButton::DOWN,  LightObj(5));
-PanelObj upPanel   (sU1, sU2, DDR::DDRButton::UP,    LightObj(3));
-PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT, LightObj(4));
+PanelObj leftPanel (sL1, sL2, DDR::DDRButton::LEFT,  LightObj(DDR::DDRLight::LEFT_LIGHT));
+PanelObj downPanel (sD1, sD2, DDR::DDRButton::DOWN,  LightObj(DDR::DDRLight::DOWN_LIGHT));
+PanelObj upPanel   (sU1, sU2, DDR::DDRButton::UP,    LightObj(DDR::DDRLight::UP_LIGHT));
+PanelObj rightPanel(sR1, sR2, DDR::DDRButton::RIGHT, LightObj(DDR::DDRLight::RIGHT_LIGHT));
 
 // --- Pad completo ---
 PadObj pad(leftPanel, downPanel, upPanel, rightPanel);

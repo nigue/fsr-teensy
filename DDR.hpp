@@ -12,6 +12,13 @@ namespace DDR {
     RIGHT = 3  // HID Button 4
   };
 
+  enum DDRLight : uint8_t {
+    LEFT_LIGHT  = 2,
+    DOWN_LIGHT  = 5,
+    UP_LIGHT    = 3,
+    RIGHT_LIGHT = 4
+  };
+
   static uint8_t state = 0;
 
   inline void start() {
